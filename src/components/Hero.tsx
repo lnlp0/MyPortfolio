@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Mail, Github, Linkedin } from 'lucide-react'
+import { Mail, Github, Linkedin, Phone } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 type Segment = { text: string; className?: string; isEm?: boolean }
@@ -41,12 +41,14 @@ const fadeUp = {
 
 const contacts = [
   { label: 'Email', href: 'mailto:me@lnlp.dev', Icon: Mail },
+  { label: 'Phone', href: `tel:${import.meta.env.VITE_PHONE}`, Icon: Phone },
   { label: 'GitHub', href: 'https://github.com/lnlp0', Icon: Github },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/lnlp', Icon: Linkedin },
 ]
 
 export default function Hero() {
   const [count, setCount] = useState(0)
+  const typingDone = count >= TOTAL_CHARS
 
   useEffect(() => {
     if (count >= TOTAL_CHARS) return
@@ -122,8 +124,8 @@ export default function Hero() {
           className="text-gray-500 dark:text-gray-400 text-base md:text-lg leading-relaxed"
           variants={fadeUp}
           initial="hidden"
-          animate="show"
-          custom={4}
+          animate={typingDone ? 'show' : 'hidden'}
+          custom={0}
         >
           사용자의 시선으로 인터페이스를 설계하고,
           <br />
@@ -135,8 +137,8 @@ export default function Hero() {
           className="flex gap-3"
           variants={fadeUp}
           initial="hidden"
-          animate="show"
-          custom={5}
+          animate={typingDone ? 'show' : 'hidden'}
+          custom={1}
         >
           {contacts.map(({ label, href, Icon }) => (
             <a
@@ -158,8 +160,8 @@ export default function Hero() {
         className="mt-20 pt-8 border-t border-gray-200 dark:border-gray-800"
         variants={fadeUp}
         initial="hidden"
-        animate="show"
-        custom={6}
+        animate={typingDone ? 'show' : 'hidden'}
+        custom={2}
       />
     </section>
   )

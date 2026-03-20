@@ -37,10 +37,10 @@ export default function Activities() {
                 transition={{ delay: i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div>
-                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{a.title}</p>
-                  {a.sub && <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{a.sub}</p>}
+                  <p className="text-base font-medium text-gray-800 dark:text-gray-200">{a.title}</p>
+                  {a.sub && <p className="text-sm text-gray-400 dark:text-gray-500 mt-0.5">{a.sub}</p>}
                 </div>
-                <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0">{a.period}</span>
+                <span className="text-sm text-gray-400 dark:text-gray-500 shrink-0">{a.period}</span>
               </motion.div>
             ))}
           </div>
@@ -65,8 +65,8 @@ export default function Activities() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{c.title}</p>
-                  <span className="text-xs text-gray-400 dark:text-gray-500">{c.period}</span>
+                  <p className="text-base font-medium text-gray-800 dark:text-gray-200">{c.title}</p>
+                  <span className="text-sm text-gray-400 dark:text-gray-500">{c.period}</span>
                 </motion.div>
               ))}
             </div>
@@ -81,10 +81,10 @@ export default function Activities() {
             <h2 className="text-2xl font-bold mb-8 dark:text-gray-100">학력</h2>
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-sm font-medium text-gray-800 dark:text-gray-200">대구소프트웨어마이스터고등학교</p>
-                <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">소프트웨어개발과</p>
+                <p className="text-base font-medium text-gray-800 dark:text-gray-200">대구소프트웨어마이스터고등학교</p>
+                <p className="text-sm text-gray-400 dark:text-gray-500 mt-0.5">소프트웨어개발과</p>
               </div>
-              <span className="text-xs text-gray-400 dark:text-gray-500 shrink-0">2024.03 ~ 2027.02 (졸업 예정)</span>
+              <span className="text-sm text-gray-400 dark:text-gray-500 shrink-0">2024.03 ~ 2027.02 (졸업 예정)</span>
             </div>
           </motion.div>
         </div>
