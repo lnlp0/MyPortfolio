@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { Mail, Github, Linkedin, Phone } from 'lucide-react'
+
 import { useEffect, useState } from 'react'
 
 type Segment = { text: string; className?: string; isEm?: boolean }
@@ -41,7 +42,6 @@ const fadeUp = {
 
 const contacts = [
   { label: 'Email', href: 'mailto:me@lnlp.dev', Icon: Mail },
-  { label: 'Phone', href: `tel:${import.meta.env.VITE_PHONE}`, Icon: Phone },
   { label: 'GitHub', href: 'https://github.com/lnlp0', Icon: Github },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/lnlp', Icon: Linkedin },
 ]
@@ -95,63 +95,84 @@ export default function Hero() {
         <div className="relative">
           {/* 공간 예약용 ghost */}
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.15] tracking-tight invisible"
+            className="text-[clamp(2rem,8vw,4.5rem)] font-semibold leading-[1.15] tracking-tight invisible"
             aria-hidden="true"
           >
-            <span className="block">세상을</span>
-            <span className="block">
+            <span className="block whitespace-nowrap">세상을</span>
+            <span className="block whitespace-nowrap">
               <span className="text-blue-500 underline underline-offset-4 decoration-blue-300">UI로</span>{' '}
               보고{' '}
               <span className="text-blue-500 underline underline-offset-4 decoration-blue-300">UX로</span>{' '}
               경험하는
             </span>
-            <span className="block">
+            <span className="block whitespace-nowrap">
               <em className="not-italic font-bold tracking-[-0.02em] text-blue-500 underline underline-offset-4 decoration-blue-300">프론트엔드</em>{' '}
               개발자
             </span>
-            <span className="block">차동규입니다.</span>
+            <span className="block whitespace-nowrap">차동규입니다.</span>
           </h1>
           {/* 타이핑 텍스트 */}
-          <h1 className="absolute inset-0 text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.15] tracking-tight">
+          <h1 className="absolute inset-0 text-[clamp(2rem,8vw,4.5rem)] font-semibold leading-[1.15] tracking-tight">
             {renderedLines}
           </h1>
         </div>
       </div>
 
-      {/* 서브텍스트 + 아이콘 */}
-      <div className="flex items-center gap-10">
-        <motion.p
-          className="text-gray-500 dark:text-gray-400 text-base md:text-lg leading-relaxed"
-          variants={fadeUp}
-          initial="hidden"
-          animate={typingDone ? 'show' : 'hidden'}
-          custom={0}
-        >
-          사용자의 시선으로 인터페이스를 설계하고,
-          <br />
-          경험으로 완성되는 프로덕트를 만들어갑니다.
-        </motion.p>
+      {/* 서브텍스트 + 연락처 */}
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+          <motion.p
+            className="text-gray-500 dark:text-gray-400 text-sm md:text-lg leading-relaxed"
+            variants={fadeUp}
+            initial="hidden"
+            animate={typingDone ? 'show' : 'hidden'}
+            custom={0}
+          >
+            사용자의 시선으로 인터페이스를 설계하고,
+            <br />
+            경험으로 완성되는 프로덕트를 만들어갑니다.
+          </motion.p>
 
-        {/* 연락처 아이콘 버튼 */}
+          {/* SNS 아이콘 버튼 */}
+          <motion.div
+            className="flex gap-3"
+            variants={fadeUp}
+            initial="hidden"
+            animate={typingDone ? 'show' : 'hidden'}
+            custom={1}
+          >
+            {contacts.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 hover:border-blue-300 dark:hover:border-blue-500 transition-colors"
+              >
+                <Icon size={18} strokeWidth={1.5} />
+              </a>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* 연락처 텍스트 */}
         <motion.div
-          className="flex gap-3"
+          className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 text-sm text-gray-400 dark:text-gray-500"
           variants={fadeUp}
           initial="hidden"
           animate={typingDone ? 'show' : 'hidden'}
-          custom={1}
+          custom={2}
         >
-          {contacts.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="flex items-center justify-center w-11 h-11 rounded-full border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 hover:border-blue-300 dark:hover:border-blue-500 transition-colors"
-            >
-              <Icon size={18} strokeWidth={1.5} />
-            </a>
-          ))}
+          <a href="mailto:me@lnlp.dev" className="flex items-center gap-1.5 hover:text-blue-500 transition-colors">
+            <Mail size={14} strokeWidth={1.5} />
+            me@lnlp.dev
+          </a>
+          <span className="hidden sm:block w-px h-3 bg-gray-300 dark:bg-gray-600" />
+          <a href="tel:01053894148" className="flex items-center gap-1.5 hover:text-blue-500 transition-colors">
+            <Phone size={14} strokeWidth={1.5} />
+            010-5389-4148
+          </a>
         </motion.div>
       </div>
 
@@ -161,7 +182,7 @@ export default function Hero() {
         variants={fadeUp}
         initial="hidden"
         animate={typingDone ? 'show' : 'hidden'}
-        custom={2}
+        custom={3}
       />
     </section>
   )
