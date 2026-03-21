@@ -76,7 +76,7 @@ const projects = [
       '카테고리 필터링 및 검색 기능 개발',
       '컴포넌트 재사용성을 고려한 폴더 구조 설계',
     ],
-    team: 3,
+    team: 5,
   },
   {
     title: 'Todate',
