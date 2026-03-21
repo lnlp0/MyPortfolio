@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { X, ExternalLink } from 'lucide-react'
+import { X } from 'lucide-react'
 
 const projects = [
   {
@@ -14,6 +14,19 @@ const projects = [
     href: 'https://www.lnlp.dev/coderun',
     period: '2025.04 ~ 2025.11',
     role: 'PM / Frontend',
+    features: [
+      'Monaco Editor 기반 코드 에디터에서 실시간 타이핑 연습',
+      '정확도, WPM(분당 타수), 오타율 등 실시간 통계 대시보드',
+      'JavaScript, Python, Java 등 다양한 언어의 코드 스니펫 제공',
+      '구문 하이라이팅 및 자동완성 지원으로 실제 코딩 환경과 유사한 UX',
+    ],
+    contributions: [
+      '프로젝트 전체 기획 및 일정 관리 (PM)',
+      'Monaco Editor 커스터마이징 및 타이핑 이벤트 핸들링 구현',
+      'Tailwind CSS 기반 반응형 UI 설계 및 개발',
+      '팀원 4명과 협업하며 코드 리뷰 및 Git 브랜치 전략 수립',
+    ],
+    team: 5,
   },
   {
     title: '두깨비',
@@ -26,6 +39,19 @@ const projects = [
     href: 'https://www.lnlp.dev/dukkaebi',
     period: '2025.11 ~ 2026.02',
     role: 'Frontend',
+    features: [
+      '문제 출제 및 관리 시스템 (마크다운 에디터 지원)',
+      '코드 제출 후 실시간 채점 결과 확인',
+      '대회 모드: 실시간 랭킹 보드 및 타이머',
+      '사용자별 풀이 기록 및 통계 페이지',
+    ],
+    contributions: [
+      'React Query를 활용한 서버 상태 관리 및 캐싱 전략 설계',
+      '실시간 채점 결과를 폴링 방식으로 UI에 반영',
+      '대회 랭킹 보드 컴포넌트 설계 및 구현',
+      'TypeScript 기반 타입 안전한 API 통신 레이어 구축',
+    ],
+    team: 8,
   },
   {
     title: '아름아리',
@@ -38,6 +64,19 @@ const projects = [
     href: '',
     period: '2024.11 ~ 2025.01',
     role: 'Frontend',
+    features: [
+      '언어별·라이브러리별 카테고리 분류 및 탐색',
+      '마크다운 기반 강의 콘텐츠 렌더링',
+      '반응형 레이아웃으로 모바일 환경 지원',
+      '테마 컬러를 활용한 일관된 디자인 시스템',
+    ],
+    contributions: [
+      'Styled-Components 기반 디자인 시스템 및 공통 컴포넌트 설계',
+      '강의 목록·상세 페이지 UI 구현',
+      '카테고리 필터링 및 검색 기능 개발',
+      '컴포넌트 재사용성을 고려한 폴더 구조 설계',
+    ],
+    team: 3,
   },
   {
     title: 'Todate',
@@ -50,6 +89,19 @@ const projects = [
     href: '',
     period: '2025.02 ~ 현재',
     role: 'Full Stack',
+    features: [
+      '기념일 등록 및 D-day 카운트다운',
+      '기념일 당일 자동 축하 메시지 발송',
+      '캘린더 뷰로 기념일 한눈에 확인',
+      'RESTful API 설계 및 사용자 인증 시스템',
+    ],
+    contributions: [
+      'Node.js + Express 기반 백엔드 API 설계 및 구현',
+      'React 프론트엔드 전체 UI/UX 설계',
+      'JWT 기반 사용자 인증 및 세션 관리',
+      '프론트엔드-백엔드 간 API 명세 설계 및 연동',
+    ],
+    team: 2,
   },
 ]
 
@@ -112,7 +164,7 @@ export default function Projects() {
               </div>
               <div className="flex flex-col items-end gap-1">
                 <span className="text-xs text-gray-500 dark:text-gray-300 bg-white/70 dark:bg-white/10 rounded-full px-3 py-1">
-                  {p.tag}
+                  {p.role}
                 </span>
                 <span className="text-xs text-gray-400 dark:text-gray-500">
                   {p.period}
@@ -127,7 +179,7 @@ export default function Projects() {
       <AnimatePresence>
         {selected && (
           <motion.div
-            className="fixed inset-0 z-50"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -135,81 +187,132 @@ export default function Projects() {
           >
             {/* 백드롭 */}
             <div
-              className="absolute inset-0 bg-black/60"
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
               onClick={() => setSelected(null)}
             />
 
-            {/* 패널 — 아래에서 슬라이드업 */}
+            {/* 센터 모달 */}
             <motion.div
-              className="absolute inset-x-0 bottom-0 max-h-[85vh] rounded-t-3xl bg-white dark:bg-neutral-900 overflow-y-auto"
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+              className="relative w-[90vw] max-w-5xl h-[80vh] bg-white dark:bg-neutral-900 rounded-xl shadow-2xl overflow-hidden flex flex-col"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* 드래그 핸들 */}
-              <div className="sticky top-0 z-10 flex justify-center pt-3 pb-2 bg-white dark:bg-neutral-900">
-                <div className="w-10 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
+              {/* 상단 비주얼 영역 */}
+              <div
+                className="relative h-[25%] shrink-0 flex items-center justify-center"
+                style={{ background: isDark ? selected.darkBg : selected.bg }}
+              >
+                <span className="text-6xl md:text-7xl font-black text-black/10 dark:text-white/10">
+                  {selected.title}
+                </span>
+
+                {/* 닫기 버튼 */}
+                <button
+                  onClick={() => setSelected(null)}
+                  className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-white/60 dark:bg-black/40 backdrop-blur-md hover:bg-white/90 dark:hover:bg-black/60 text-gray-600 dark:text-gray-300 transition-colors"
+                >
+                  <X size={18} />
+                </button>
               </div>
 
-              {/* 콘텐츠 */}
-              <div className="max-w-3xl mx-auto px-6 pb-10 md:px-10">
-                {/* 타이틀 + 닫기 */}
-                <div className="flex items-start justify-between gap-4 mt-2">
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-                      {selected.title}
-                    </h3>
-                    <p className="text-gray-500 dark:text-gray-400 mt-1">
-                      {selected.desc}
-                    </p>
+              {/* 콘텐츠 영역 */}
+              <div className="flex-1 flex overflow-hidden">
+                {/* 왼쪽: 스크롤되는 본문 */}
+                <div className="flex-1 overflow-y-auto px-10 md:px-14 py-10" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                  <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    {selected.title}
+                  </h3>
+                  <p className="text-base text-gray-400 dark:text-gray-500 mt-1">
+                    {selected.desc}
+                  </p>
+
+                  <div className="w-12 h-0.5 bg-gray-200 dark:bg-gray-700 my-6" />
+
+                  <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {selected.detail}
+                  </p>
+
+                  {/* 주요 기능 */}
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mt-8 mb-3 uppercase tracking-wider">
+                    주요 기능
+                  </h4>
+                  <ul className="space-y-2">
+                    {selected.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600 dark:text-gray-300">
+                        <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-1.5" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* 기여 내용 */}
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mt-8 mb-3 uppercase tracking-wider">
+                    기여 내용
+                  </h4>
+                  <ul className="space-y-2">
+                    {selected.contributions.map((c, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600 dark:text-gray-300">
+                        <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-1.5" />
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* 기술 태그 */}
+                  <div className="flex flex-wrap gap-2 mt-8">
+                    {selected.tag.split(' · ').map((t) => (
+                      <span
+                        key={t}
+                        className="text-sm text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-1.5 font-medium"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                  <button
-                    onClick={() => setSelected(null)}
-                    className="shrink-0 mt-1 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 transition-colors"
-                  >
-                    <X size={18} />
-                  </button>
+
                 </div>
 
-                {/* 메타 태그 */}
-                <div className="flex flex-wrap items-center gap-2 mt-5">
-                  <span className="text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 rounded-full px-3 py-1">
-                    {selected.role}
-                  </span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-full px-3 py-1">
-                    {selected.period}
-                  </span>
-                  {selected.tag.split(' · ').map((t) => (
-                    <span
-                      key={t}
-                      className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-full px-3 py-1"
+                {/* 오른쪽: 고정 메타 정보 */}
+                <div className="hidden md:flex shrink-0 w-52 flex-col justify-between border-l border-gray-100 dark:border-gray-800 px-8 py-10">
+                  <div className="flex flex-col gap-5">
+                  <div>
+                    <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider font-medium">기간</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">{selected.period}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider font-medium">역할</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">{selected.role}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider font-medium">팀 규모</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mt-1 font-medium">{selected.team}명</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wider font-medium">기술 스택</p>
+                    <div className="flex flex-col gap-1 mt-1">
+                      {selected.tag.split(' · ').map((t) => (
+                        <p key={t} className="text-sm text-gray-700 dark:text-gray-300 font-medium">{t}</p>
+                      ))}
+                    </div>
+                  </div>
+
+                  </div>
+
+                  {/* 링크 버튼 */}
+                  {selected.href && (
+                    <a
+                      href={selected.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-full hover:opacity-80 transition-opacity"
                     >
-                      {t}
-                    </span>
-                  ))}
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                      GitHub
+                    </a>
+                  )}
                 </div>
-
-                {/* 구분선 */}
-                <div className="border-t border-gray-100 dark:border-gray-800 mt-6 mb-6" />
-
-                {/* 상세 설명 */}
-                <p className="text-base text-gray-700 dark:text-gray-300 leading-[1.85]">
-                  {selected.detail}
-                </p>
-
-                {/* 링크 버튼 */}
-                {selected.href && (
-                  <a
-                    href={selected.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-8 text-sm font-medium text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 rounded-full px-5 py-2.5 transition-colors"
-                  >
-                    프로젝트 보러가기
-                    <ExternalLink size={14} />
-                  </a>
-                )}
               </div>
             </motion.div>
           </motion.div>
