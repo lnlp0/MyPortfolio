@@ -39,6 +39,8 @@ function App() {
       <Activities />
       <Skills />
       <Projects />
+      <Analytics />
+      <SpeedInsights />
     </>
   )
 }
