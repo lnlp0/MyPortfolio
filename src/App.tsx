@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Skills from './components/Skills'
