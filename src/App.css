@@ -31,3 +31,10 @@ body {
   background: #0f0f0d;
   color: #f0f0ee;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blink {
+    animation: none;
+    opacity: 1;
+  }
+}

@@ -56,14 +56,15 @@ export default function Hero() {
     return () => clearTimeout(t)
   }, [count])
 
-  let remaining = count
   const renderedLines = LINES.map((line, li) => {
+    const previousLineChars = LINES
+      .slice(0, li)
+      .reduce((sum, prevLine) => sum + prevLine.reduce((s, seg) => s + seg.text.length, 0), 0)
     const lineLen = line.reduce((s, seg) => s + seg.text.length, 0)
-    if (remaining <= 0) return null
+    const lineChars = Math.min(Math.max(count - previousLineChars, 0), lineLen)
+    if (lineChars <= 0) return null
 
-    const isLastRenderedLine = remaining <= lineLen
-    const lineChars = Math.min(remaining, lineLen)
-    remaining -= lineLen
+    const isLastRenderedLine = count <= previousLineChars + lineLen
 
     let charLeft = lineChars
     const segs = line.map((seg, si) => {

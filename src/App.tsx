@@ -38,7 +38,7 @@ function App() {
       <Hero />
       <Activities />
       <Skills />
-      <Projects />
+      <Projects isDark={isDark} />
       <Analytics />
       <SpeedInsights />
     </>
