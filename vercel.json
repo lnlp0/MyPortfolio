@@ -9,6 +9,11 @@
       "source": "/dukkaebi",
       "destination": "https://github.com/DUKKAEBI/dukkaebi-web",
       "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "https://github.com/lnlp0/MyPortfolio",
+      "permanent": true
     }
   ]
 }

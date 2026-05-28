@@ -1,0 +1,181 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - button "테마 전환" [ref=e4]: ☾
+  - generic [ref=e5]:
+    - heading [level=1] [ref=e8]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - paragraph [ref=e11]:
+          - text: 사용자의 시선으로 인터페이스를 설계하고,
+          - text: 경험으로 완성되는 프로덕트를 만들어갑니다.
+        - generic [ref=e12]:
+          - link "Email" [ref=e13] [cursor=pointer]:
+            - /url: mailto:me@lnlp.dev
+            - img [ref=e14]
+          - link "GitHub" [ref=e17] [cursor=pointer]:
+            - /url: https://github.com/lnlp0
+            - img [ref=e18]
+          - link "LinkedIn" [ref=e21] [cursor=pointer]:
+            - /url: https://linkedin.com/in/lnlp
+            - img [ref=e22]
+      - generic [ref=e26]:
+        - link "me@lnlp.dev" [ref=e27] [cursor=pointer]:
+          - /url: mailto:me@lnlp.dev
+          - img [ref=e28]
+          - text: me@lnlp.dev
+        - link "010-5389-4148" [ref=e32] [cursor=pointer]:
+          - /url: tel:01053894148
+          - img [ref=e33]
+          - text: 010-5389-4148
+  - generic [ref=e37]:
+    - generic [ref=e38]:
+      - heading "주요 활동" [level=2] [ref=e39]
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - paragraph [ref=e43]: 28회 알파코 디지털 새싹 캠프 앱잼 장려상
+            - paragraph [ref=e44]: 치매 예방 및 치료 서비스
+          - generic [ref=e45]: "2024.12"
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - paragraph [ref=e48]: 2025 교내 나르샤 프로젝트 PM 참여
+            - paragraph [ref=e49]: 코드 기반 타자연습 서비스 CodeRun
+          - generic [ref=e50]: 2025.03 ~ 11
+        - generic [ref=e51]:
+          - paragraph [ref=e53]: 교내 알고리즘 대회 DPC 운영 및 문제 출제
+          - generic [ref=e54]: "2025.07"
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - paragraph [ref=e57]: 제 24회 TOPCIT
+            - paragraph [ref=e58]: 389점, 2수준
+          - generic [ref=e59]: "2025.11"
+        - generic [ref=e60]:
+          - paragraph [ref=e62]: 교내 동아리 프로젝트 "두깨비" 프론트엔드 참여
+          - generic [ref=e63]: "2025.11"
+        - generic [ref=e64]:
+          - paragraph [ref=e66]: 2026년 겨울방학 실리콘밸리 온라인 인턴십 참여
+          - generic [ref=e67]: 2026.01 ~ 03
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - heading "자격증" [level=2] [ref=e70]
+        - generic [ref=e71]:
+          - generic [ref=e72]:
+            - paragraph [ref=e73]: AI 코딩 활용 능력 1급
+            - generic [ref=e74]: "2025.12"
+          - generic [ref=e75]:
+            - paragraph [ref=e76]: 프로그래밍 기능사
+            - generic [ref=e77]: 2026.03 (예정)
+      - generic [ref=e78]:
+        - heading "학력" [level=2] [ref=e79]
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - paragraph [ref=e82]: 대구소프트웨어마이스터고등학교
+            - paragraph [ref=e83]: 소프트웨어개발과
+          - generic [ref=e84]: 2024.03 ~ 2027.02 (졸업 예정)
+  - generic [ref=e86]:
+    - heading "기술 스택" [level=2] [ref=e87]
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - generic [ref=e90]: Frontend
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - img [ref=e93]
+            - text: React
+          - generic [ref=e95]:
+            - img [ref=e96]
+            - text: TypeScript
+          - generic [ref=e98]:
+            - img [ref=e99]
+            - text: Vue.js
+          - generic [ref=e101]:
+            - img [ref=e102]
+            - text: Next.js
+          - generic [ref=e104]:
+            - img [ref=e105]
+            - text: HTML
+          - generic [ref=e107]:
+            - img [ref=e108]
+            - text: CSS
+          - generic [ref=e110]:
+            - img [ref=e111]
+            - text: JavaScript
+      - generic [ref=e113]:
+        - generic [ref=e114]: App
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - img [ref=e117]
+            - text: React Native
+          - generic [ref=e119]:
+            - img [ref=e120]
+            - text: Kotlin
+          - generic [ref=e122]:
+            - img [ref=e123]
+            - text: Java
+      - generic [ref=e125]:
+        - generic [ref=e126]: Others
+        - generic [ref=e127]:
+          - generic [ref=e128]:
+            - img [ref=e129]
+            - text: Python
+          - generic [ref=e131]:
+            - img [ref=e132]
+            - text: Spring Boot
+          - generic [ref=e134]:
+            - img [ref=e135]
+            - text: Node.js
+          - generic [ref=e137]: C
+          - generic [ref=e138]: SQL
+      - generic [ref=e139]:
+        - generic [ref=e140]: Tools
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - img [ref=e143]
+            - text: Figma
+          - generic [ref=e145]:
+            - img [ref=e146]
+            - text: GitHub
+          - generic [ref=e148]:
+            - img [ref=e149]
+            - text: Git
+          - generic [ref=e151]:
+            - img [ref=e152]
+            - text: Slack
+  - generic [ref=e154]:
+    - heading "프로젝트" [level=2] [ref=e155]
+    - generic [ref=e156]:
+      - generic [ref=e157] [cursor=pointer]:
+        - generic [ref=e159]: "CodeRun{ }"
+        - generic [ref=e160]:
+          - generic [ref=e161]:
+            - paragraph [ref=e162]: "CodeRun{ }"
+            - paragraph [ref=e163]: 학생을 위한 코드기반 타자연습 서비스
+          - generic [ref=e164]:
+            - generic [ref=e165]: PM / Frontend
+            - generic [ref=e166]: 2025.04 ~ 2025.11
+      - generic [ref=e167] [cursor=pointer]:
+        - generic [ref=e169]: 두깨비
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - paragraph [ref=e172]: 두깨비
+            - paragraph [ref=e173]: 교내 온라인 Judge 및 대회 서비스
+          - generic [ref=e174]:
+            - generic [ref=e175]: Frontend
+            - generic [ref=e176]: 2025.11 ~ 2026.02
+      - generic [ref=e177] [cursor=pointer]:
+        - generic [ref=e179]: 아름아리
+        - generic [ref=e180]:
+          - generic [ref=e181]:
+            - paragraph [ref=e182]: 아름아리
+            - paragraph [ref=e183]: 라이브러리 · 언어 정리 및 강의 서비스
+          - generic [ref=e184]:
+            - generic [ref=e185]: Frontend
+            - generic [ref=e186]: 2024.11 ~ 2025.01
+      - generic [ref=e187] [cursor=pointer]:
+        - generic [ref=e189]: Todate
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - paragraph [ref=e192]: Todate
+            - paragraph [ref=e193]: 신개념 기념일 축하 서비스
+          - generic [ref=e194]:
+            - generic [ref=e195]: Full Stack
+            - generic [ref=e196]: 2025.02 ~ 현재
