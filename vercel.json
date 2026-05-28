@@ -14,6 +14,26 @@
       "source": "/portfolio",
       "destination": "https://github.com/lnlp0/MyPortfolio",
       "permanent": true
+    },
+    {
+      "source": "/innoflow",
+      "destination": "https://github.com/2026DGSWInnoflow/innoflow-backend",
+      "permanent": true
+    },
+    {
+      "source": "/NewsDrop_App",
+      "destination": "https://github.com/lnlp0/NewsDrop-App",
+      "permanent": true
+    },
+    {
+      "source": "/NewsDrop_Server",
+      "destination": "https://github.com/lnlp0/NewsDrop-Server",
+      "permanent": true
+    },
+    {
+      "source": "/NewsDrop_Web",
+      "destination": "https://github.com/lnlp0/NewsDrop-Web",
+      "permanent": true
     }
   ]
 }
